@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>LINKFIRE</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<div id="menu" class="scr on">
+  <div class="logo"><h1 id="gname">LINKFIRE</h1><p>1v1 duel over local Wi-Fi. No internet needed.</p></div>
+  <div class="col">
+    <button class="btn pri big" id="bLocal">LOCAL MATCH</button>
+    <button class="btn" id="bSet">SETTINGS</button>
+  </div>
+  <div class="foot">TermorganWorks</div>
+</div>
+
+<div id="local" class="scr">
+  <h2>LOCAL MATCH</h2>
+  <div class="row">
+    <button class="btn pri big" id="bHost">CREATE ROOM<small>You host. You turn on the hotspot.</small></button>
+    <button class="btn big" id="bJoin">JOIN ROOM<small>Join your friend's hotspot.</small></button>
+  </div>
+  <button class="btn sm" data-back="menu">BACK</button>
+</div>
+
+<div id="host" class="scr">
+  <h2>CREATE ROOM</h2>
+  <ol class="steps">
+    <li>Turn on your phone's <b>Wi-Fi hotspot</b>.</li>
+    <li>Your friend connects to it in their Wi-Fi settings.</li>
+    <li>They tap <b>JOIN ROOM</b>. This screen continues on its own.</li>
+  </ol>
+  <button class="btn" id="bHotspot">OPEN HOTSPOT SETTINGS</button>
+  <p id="hostStat" class="stat">Starting room…</p>
+  <p id="hostIps" class="dim"></p>
+  <button class="btn sm" data-back="local">BACK</button>
+</div>
+
+<div id="join" class="scr">
+  <h2>JOIN ROOM</h2>
+  <ol class="steps">
+    <li>Connect to your friend's <b>hotspot</b> in Wi-Fi settings.</li>
+    <li>If Android says "no internet", choose to stay connected.</li>
+    <li>Come back here and tap <b>CONNECT</b>.</li>
+  </ol>
+  <div class="row">
+    <button class="btn" id="bWifi">OPEN WI-FI SETTINGS</button>
+    <button class="btn pri" id="bConnect">CONNECT</button>
+  </div>
+  <div class="row"><span class="dim">Host IP (only if auto-connect fails)</span><input id="ipIn" type="text" inputmode="decimal" placeholder="192.168.43.1"></div>
+  <p id="joinStat" class="stat"></p>
+  <button class="btn sm" data-back="local">BACK</button>
+</div>
+
+<div id="loadout" class="scr">
+  <div class="lhead"><h2>LOADOUT</h2><span id="oppStat" class="dim"></span></div>
+  <div class="lcols">
+    <div><h3>Weapon <small>(pistol is always your sidearm)</small></h3><div id="wlist" class="cards"></div></div>
+    <div><h3>Abilities <small>(pick 2)</small></h3><div id="alist" class="cards"></div></div>
+  </div>
+  <div class="row"><button class="btn pri big" id="bReady">READY</button><button class="btn sm" id="bLeave">LEAVE</button></div>
+</div>
+
+<div id="settings" class="scr">
+  <h2>SETTINGS</h2>
+  <label class="setrow">Aim sensitivity<input id="sSens" type="range" min="0.5" max="3" step="0.1"></label>
+  <label class="setrow">Button size<input id="sBtn" type="range" min="0.7" max="1.4" step="0.05"></label>
+  <label class="setrow">Volume<input id="sVol" type="range" min="0" max="1" step="0.05"></label>
+  <label class="setrow">Fire by pushing the aim stick to its edge<input id="sAuto" type="checkbox"></label>
+  <label class="setrow">Vibration<input id="sVib" type="checkbox"></label>
+  <div class="row"><button class="btn" id="bEdit">EDIT BUTTON LAYOUT</button><button class="btn sm" data-back="menu">BACK</button></div>
+</div>
+
+<div id="editBar"><span class="dim">Drag the buttons where your thumbs like them</span><button class="btn sm" id="bEditReset">RESET</button><button class="btn pri sm" id="bEditDone">DONE</button></div>
+
+<div id="result" class="scr ov">
+  <h1 id="resT">VICTORY</h1>
+  <p id="resS">5 – 3</p>
+  <p id="rmStat" class="stat"></p>
+  <div class="row"><button class="btn pri big" id="bRematch">REMATCH</button><button class="btn" id="bLoadout">CHANGE LOADOUT</button><button class="btn sm" id="bResMenu">LEAVE</button></div>
+</div>
+
+<div id="leave" class="scr ov">
+  <h2>Leave the match?</h2>
+  <div class="row"><button class="btn pri" id="bStay">STAY</button><button class="btn" id="bLeaveYes">LEAVE</button></div>
+</div>
+
+<div id="msg" class="scr ov">
+  <h2 id="msgT"></h2><p id="msgP"></p>
+  <button class="btn pri" id="msgBtn">OK</button>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/net.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
